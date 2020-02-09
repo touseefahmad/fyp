@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:numberpicker="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        >
+        <TextView
+            android:id="@+id/tvcartName"
+            android:layout_width="0dp"
+            android:text="itemName"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/tvcartPrice"
+            android:layout_width="0dp"
+            android:text="ItemPrice"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <com.travijuu.numberpicker.library.NumberPicker
+            android:id="@+id/cartqty_picker"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            numberpicker:min="1"
+            numberpicker:max="10"
+            numberpicker:value="1"
+            numberpicker:unit="1"
+            numberpicker:focusable="false"
+            numberpicker:custom_layout="@layout/number_picker_custom_layout" />
+        <Button
+            android:id="@+id/btnRemItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="X"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
