@@ -77,7 +77,12 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ActivityShowCart.updateTotalPrice();
             }
         });
-        int val = Integer.parseInt(cartList.get(position).getQuantiry().replaceAll("[A-z]+", ""));
+
+      //  int val = Integer.parseInt(cartList.get(position).getQuantiry().replaceAll("[A-z]+", ""));
+        if(null ==cartList.get(position).getQuantiry()){
+            cartList.get(position).setQuantiry("1");
+        }
+        int val = Integer.parseInt(cartList.get(position).getQuantiry());
 
 
         myViewHolder.cartqty_picker.setValue(val);

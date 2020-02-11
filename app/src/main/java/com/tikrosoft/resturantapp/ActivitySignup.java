@@ -30,7 +30,7 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
     EditText etsPhone;
     EditText etsPassword;
     Button btnSignup_;
-    TextView adminSignup;
+    Button adminSignup;
 
     String utype="0";
 

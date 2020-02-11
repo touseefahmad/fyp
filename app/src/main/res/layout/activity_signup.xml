@@ -6,7 +6,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
         <TextView
-        android:id="@+id/adminSignup"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
             android:text="Signup"
@@ -72,14 +72,31 @@
                 android:textColor="@color/colorTextMain"
                 android:padding="20sp"
                 />
-            <Button
-                android:id="@+id/btnSignup_"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SignUp"
-                android:textColor="@color/colorTextMain"
-                android:layout_marginTop="20dp"
-                />
+                android:layout_weight="2"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btnSignup_"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="User SignUp"
+                    android:textColor="@color/colorTextMain"
+                    android:layout_marginTop="20dp"
+                    />
+                <Button
+                    android:id="@+id/adminSignup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SignUp"
+                    android:textColor="@color/colorTextMain"
+                    android:layout_marginTop="20dp"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
     </RelativeLayout>

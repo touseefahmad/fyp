@@ -27,7 +27,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
     EditText etEmail;
     EditText etPassword;
-    TextView adminLogin;
+    Button adminLogin;
     Button btnLogin;
     Button btnGuest;
     Button btnSignup;
