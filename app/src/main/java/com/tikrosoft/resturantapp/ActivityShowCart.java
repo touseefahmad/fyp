@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
 import com.tikrosoft.resturantapp.adapters.AdapterCart;
 
 import org.json.JSONArray;
@@ -98,7 +101,7 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
             adapterCart.notifyDataSetChanged();
             tvTotalPrice.setText("0");
         }
-        if(view.getId() == R.id.btnShowCart){
+        if(view.getId() == R.id.btnPlaceOrder){
             placeOrder();
         }
 
@@ -111,6 +114,7 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 
         //Create json array for filter
         JSONArray array = new JSONArray();
+        final JSONObject jsonOBJ = new JSONObject();
 
         //Create json objects for two filter Ids
         JSONObject jsonParam;
@@ -143,10 +147,9 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 
                     //Add string params
                     jsonParam.put("orderid", "0");
-                    jsonParam.put("userid","" );
-                    jsonParam.put("itemid","" );
-
-                    jsonParam.put("itemname", cartList.get(i).getItemName());
+                    jsonParam.put("userid","20" );
+                    jsonParam.put("itemid","1" );
+                    jsonParam.put("itemname", "Sent from mobile by dev");//"cartList.get(i).getItemName());
                     jsonParam.put("qty", cartList.get(i).getQuantiry());
                     jsonParam.put("unitprice", cartList.get(i).getUnitPrice());
                     array.put(jsonParam);
@@ -156,6 +159,15 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
                     e.printStackTrace();
                 }
             }
+
+
+            try {
+                jsonOBJ.put("order", array);
+                Log.e("val","VAL");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
 //        JSONObject jsonParam = new JSONObject();
 //        JSONObject jsonParam1 = new JSONObject();
@@ -175,56 +187,83 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 
        // array.put(jsonParam);
        // array.put(jsonParam1);
-        JsonArrayRequest request_json = new JsonArrayRequest(Request.Method.POST, URL, array,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        //Get Final response
-                        try {
 
-                            JSONObject jObj = new JSONObject();
-                            jObj = response.getJSONObject(0);
-                             jObj.get("success");
 
-                        } catch (JSONException e) {
-                            Log.e("MYAPP", "unexpected JSON exception", e);
-                            // Do something to recover ... or kill the app.
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
+        JsonObjectRequest requestJson = new JsonObjectRequest(Request.Method.POST, URL, jsonOBJ, new Response.Listener<JSONObject>() {
             @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                VolleyLog.e("Error: ", volleyError.getMessage());
+            public void onResponse(JSONObject response) {
+                Log.e("ORDERRESP:",response.toString());
+             //   Toast.makeText()
 
             }
-        }) {
+        }, new Response.ErrorListener() {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String, String>();
-                // Add headers
-                return headers;
+            public void onErrorResponse(VolleyError error) {
+                Log.e("String",jsonOBJ.toString());
+                Log.e("ORDERRESP:",error.getMessage());
             }
 
-            //Important part to convert response to JSON Array Again
-            @Override
-            protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
-                String responseString;
-                JSONArray array = new JSONArray();
-                if (response != null) {
+        });
+        queue.add(requestJson);
 
-                    try {
-                        responseString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-                        JSONObject obj = new JSONObject(responseString);
-                        (array).put(obj);
-                    } catch (Exception ex) {
-                    }
-                }
-                //return array;
-                return Response.success(array, HttpHeaderParser.parseCacheHeaders(response));
-            }
-        };
-        queue.add(request_json);
+
+//        JsonObjectRequest request_json = new JsonObject(Request.Method.POST, URL, jsonOBJ,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JsonObject response) {
+//                        //Get Final response
+//                        try {
+//
+//                            JSONObject jObj = new JSONObject();
+//                            jsonOBJ = response;
+//                          //  boolean resp  = jObj.getBoolean("success");
+//                          //  Toast.makeText(getApplicationContext(),"Resp:"+jObj.getString("msg"),Toast.LENGTH_SHORT).show();
+//
+//                           /* if(!resp){
+//                                 Toast.makeText(getApplicationContext(),"Resp:"+jObj.getString("msg"),Toast.LENGTH_SHORT).show();
+//                             }*/
+//
+//                        } catch (JSONException e) {
+//                            Log.e("MYAPP", "unexpected JSON exception", e);
+//                          //  Toast.makeText(getApplicationContext(),"Resp:"+"Exception Thrown",Toast.LENGTH_SHORT).show();
+//
+//                            // Do something to recover ... or kill the app.
+//                        }
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//                VolleyLog.e("Error: ", volleyError.getMessage());
+//
+//            }
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> headers = new HashMap<String, String>();
+//                // Add headers
+//                return headers;
+//            }
+//
+//            //Important part to convert response to JSON Array Again
+//            @Override
+//            protected Response<JsonObject> parseNetworkResponse(NetworkResponse response) {
+//                String responseString;
+//                JSONArray array = new JSONArray();
+//                if (response != null) {
+//
+//                    try {
+//                        responseString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+//                        JSONObject obj = new JSONObject(responseString);
+//                        (array).put(obj);
+//                    } catch (Exception ex) {
+//                    }
+//                }
+//                //return array;
+//                return Response.success(jsonOBJ, HttpHeaderParser.parseCacheHeaders(response));
+//            }
+//        };
+//        queue.add(request_json);
     }
 
 
