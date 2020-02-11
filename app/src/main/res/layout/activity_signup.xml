@@ -91,7 +91,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="SignUp"
+                    android:text="Admin SignUp"
                     android:textColor="@color/colorTextMain"
                     android:layout_marginTop="20dp"
                     />
