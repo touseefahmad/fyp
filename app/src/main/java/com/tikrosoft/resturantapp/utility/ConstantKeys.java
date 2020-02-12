@@ -6,5 +6,6 @@ public class ConstantKeys {
     public final static String KEYEMAIL = "email";
     public final static String KEYPHONE = "phone";
     public final static String KEYTYPE = "type";
+    public final static String PREF_NAME = "pref";
 
 }

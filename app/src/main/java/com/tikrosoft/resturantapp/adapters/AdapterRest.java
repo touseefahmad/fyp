@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tikrosoft.resturantapp.ActivityAddItem;
 import com.tikrosoft.resturantapp.ActivityItemsList;
+import com.tikrosoft.resturantapp.ActivityLogin;
 import com.tikrosoft.resturantapp.R;
 import com.tikrosoft.resturantapp.pojo.resturants.Rest;
 
@@ -65,10 +67,16 @@ public class AdapterRest extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent items = new Intent(context, ActivityItemsList.class);
-                        items.putExtra("restid",mRecyclerViewItems.get(position).getRestId());
-                        context.startActivity(items);
-                        Log.e("ID: ",mRecyclerViewItems.get(position).getRestId()+"");
+                        if (ActivityLogin.USER_STATUS.compareTo("1") == 0) {
+                            Intent items = new Intent(context, ActivityAddItem.class);
+                            items.putExtra("restid", mRecyclerViewItems.get(position).getRestId());
+                            context.startActivity(items);
+                        } else {
+                            Intent items = new Intent(context, ActivityItemsList.class);
+                            items.putExtra("restid", mRecyclerViewItems.get(position).getRestId());
+                            context.startActivity(items);
+                            Log.e("ID: ", mRecyclerViewItems.get(position).getRestId() + "");
+                        }
                     }
                 });
 

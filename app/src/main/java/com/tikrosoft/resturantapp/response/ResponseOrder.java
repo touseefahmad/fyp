@@ -25,7 +25,7 @@ public class ResponseOrder extends DataObservor {
 
 
         String url = context.getResources().getString(R.string.url)
-                + "getordersbyid.php?rest_id="+uid;
+                + "getordersbyid.php?userid="+uid;
 
         Log.d("URL String:", url);
         RequestQueue requestQueue = ApplicationClass.getInstance().getRequestQueue();

@@ -30,6 +30,8 @@
         <activity android:name=".ActivityAddToCart"/>
         <activity android:name=".ActivityShowCart"/>
         <activity android:name=".ActivityAdmin"/>
+        <activity android:name=".ActivityShowUseOrders"/>
+        <activity android:name=".ActivityAddItem"/>
 
     </application>
 

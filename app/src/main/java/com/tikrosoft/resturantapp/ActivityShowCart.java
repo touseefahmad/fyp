@@ -1,6 +1,8 @@
 package com.tikrosoft.resturantapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonObject;
 import com.tikrosoft.resturantapp.adapters.AdapterCart;
+import com.tikrosoft.resturantapp.utility.ConstantKeys;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +37,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.tikrosoft.resturantapp.ActivityHome.cartList;
+import static com.tikrosoft.resturantapp.utility.ConstantKeys.KEYID;
+import static com.tikrosoft.resturantapp.utility.ConstantKeys.PREF_NAME;
 
 public class ActivityShowCart extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerShowCart;
@@ -74,6 +79,8 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
             TOTAL_PRICE = 0;
             if (cartList.size() > 0) {
                 for (int i = 0; i < cartList.size() ; i++) {
+                    String itemPrice = cartList.get(i).getItemPrice();
+
                     TOTAL_PRICE += Integer.parseInt(cartList.get(i).getItemPrice().replaceAll("[A-z]+", ""));
                     tvTotalPrice.setText(Integer.toString(TOTAL_PRICE));
                 }
@@ -146,10 +153,12 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 
 
                     //Add string params
+                    SharedPreferences shared = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+                    String uid = (shared.getString(KEYID, ""));
                     jsonParam.put("orderid", "0");
-                    jsonParam.put("userid","20" );
-                    jsonParam.put("itemid","1" );
-                    jsonParam.put("itemname", "Sent from mobile by dev");//"cartList.get(i).getItemName());
+                    jsonParam.put("userid",uid);
+                    jsonParam.put("itemid",cartList.get(i).getItemId() );
+                    jsonParam.put("itemname", cartList.get(i).getItemName());//"cartList.get(i).getItemName());
                     jsonParam.put("qty", cartList.get(i).getQuantiry());
                     jsonParam.put("unitprice", cartList.get(i).getUnitPrice());
                     array.put(jsonParam);
@@ -162,7 +171,7 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 
 
             try {
-                jsonOBJ.put("order", array);
+                jsonOBJ.put("arr", array);
                 Log.e("val","VAL");
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -10,6 +10,17 @@
         android:layout_margin="20dp"
         android:layout_alignParentRight="true"
         />
+    <Button
+
+        android:id="@+id/btnBrwHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Order History"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        android:layout_alignParentLeft="true"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,7 +49,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/btnBrwHist"
+                android:id="@+id/btnOrderHist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Order History"

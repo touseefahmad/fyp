@@ -23,6 +23,8 @@ import com.tikrosoft.resturantapp.utility.UtilityClass;
 import java.util.Observable;
 import java.util.Observer;
 
+import static com.tikrosoft.resturantapp.ActivityLogin.USER_STATUS;
+
 public class ActivitySignup extends AppCompatActivity implements View.OnClickListener, Observer {
 
     EditText etSname;
@@ -90,10 +92,12 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
 
         if(view.getId() == R.id.btnSignup_){
             utype = "0";
+            USER_STATUS = "0";
             validateFields();
         }
         if(view.getId() == R.id.adminSignup){
             utype = "1";
+            USER_STATUS="1";
             validateFields();
 
         }
@@ -150,11 +154,12 @@ public class ActivitySignup extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(getApplicationContext(),"You are logged in as an admin", Toast.LENGTH_SHORT).show();
                     Intent Home = new Intent(ActivitySignup.this,ActivityAdmin.class);
                     startActivity(Home);
-                }
+                }else {
 
-                Toast.makeText(getApplicationContext(),response.getResponse().getUser().getUid()+"",Toast.LENGTH_SHORT).show();
-                Intent Home = new Intent(ActivitySignup.this,ActivityHome.class);
-                startActivity(Home);
+                    Toast.makeText(getApplicationContext(), response.getResponse().getUser().getUid() + "", Toast.LENGTH_SHORT).show();
+                    Intent Home = new Intent(ActivitySignup.this, ActivityHome.class);
+                    startActivity(Home);
+                }
 
 
             }else

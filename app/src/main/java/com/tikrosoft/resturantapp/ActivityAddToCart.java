@@ -66,6 +66,7 @@ public class ActivityAddToCart extends AppCompatActivity implements View.OnClick
         cartItem.setItemPrice(item.getMenuItemPrice());
         unitPrice = item.getMenuItemPrice();
         cartItem.setUnitPrice(unitPrice);
+        cartItem.setItemId(item.getMenuId());
 
         btnAddCartDone.setOnClickListener(this);
         btnShowCart.setOnClickListener(this);

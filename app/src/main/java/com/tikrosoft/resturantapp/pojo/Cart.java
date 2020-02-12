@@ -6,6 +6,7 @@ public class Cart {
     String itemPrice;
     String quantiry;
     String unitPrice;
+    String itemId;
 
     public String getItemName() {
         return itemName;
@@ -45,5 +46,13 @@ public class Cart {
 
     public void setUnitPrice(String unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 }

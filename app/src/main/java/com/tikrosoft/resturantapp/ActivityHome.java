@@ -29,6 +29,7 @@ public class ActivityHome extends AppCompatActivity implements View.OnClickListe
     Button btnShowCart;
     Button btnBrwHist;
     Button btnBrwRest;
+    Button btnOrderHist;
 
     ResponseIntro response;
     IntroModel modle;
@@ -57,10 +58,12 @@ public class ActivityHome extends AppCompatActivity implements View.OnClickListe
         btnShowCart = findViewById(R.id.btnShowCartHome);
         btnBrwHist = findViewById(R.id.btnBrwHist);
         btnBrwRest = findViewById(R.id.btnBrwRest);
+        btnOrderHist = findViewById(R.id.btnOrderHist);
 
         btnShowCart.setOnClickListener(this);
         btnBrwHist.setOnClickListener(this);
         btnBrwRest.setOnClickListener(this);
+        btnOrderHist.setOnClickListener(this);
 
 
         response=new ResponseIntro();
@@ -94,6 +97,10 @@ public class ActivityHome extends AppCompatActivity implements View.OnClickListe
                 Intent showCart = new Intent(this,ActivityShowCart.class);
                 startActivity(showCart);
 
+        }
+        if(view.getId() == R.id. btnOrderHist){
+            Intent showCart = new Intent(this,ActivityShowUseOrders.class);
+            startActivity(showCart);
         }
 
     }

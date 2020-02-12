@@ -1,6 +1,7 @@
 package com.tikrosoft.resturantapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -95,6 +96,8 @@ public class ActivityAdmin extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(getApplicationContext(),response.getResponse().getMsg()+"",Toast.LENGTH_SHORT).show();
                // Intent Home = new Intent(ActivityLogin.this,ActivityHome.class);
                 //startActivity(Home);
+                Intent browseRest = new Intent(ActivityAdmin.this,ActivityResturantList.class);
+                startActivity(browseRest);
 
 
             }else

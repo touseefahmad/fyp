@@ -23,6 +23,8 @@ import com.tikrosoft.resturantapp.utility.UtilityClass;
 import java.util.Observable;
 import java.util.Observer;
 
+import static com.tikrosoft.resturantapp.utility.ConstantKeys.PREF_NAME;
+
 public class ActivityLogin extends AppCompatActivity implements View.OnClickListener, Observer {
 
     EditText etEmail;
@@ -31,6 +33,8 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     Button btnLogin;
     Button btnGuest;
     Button btnSignup;
+
+    SharedPreferences shared;
 
 
     ResponseLogin response;
@@ -42,6 +46,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     SharedPreferences sharedPref;
 
     String utype;
+    public  static  String USER_STATUS = "0" ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,8 +93,13 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
         if(view.getId() == R.id.btnGuest){
             Intent home = new Intent(ActivityLogin.this,ActivityHome.class);
-            SharedPreferences.Editor editor = sharedPref.edit();
+            shared = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = shared.edit();
             editor.putString(ConstantKeys.KEYID,"guest");
+            editor.commit();
+            // SharedPreferences.Editor editor = sharedPref.edit();
+
+            editor.commit();
 
             editor.commit();
             startActivity(home);
@@ -100,10 +110,12 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         }
         if(view.getId() == R.id.btnLogin){
             utype = "0";
+            USER_STATUS="0";
             validateFields();
         }
         if(view.getId() == R.id.adminLogin){
             utype = "1";
+            USER_STATUS = "1";
             validateFields();
         }
 
@@ -118,8 +130,12 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
             if (response.getResponse().getSuccess()) {
 
-                SharedPreferences.Editor editor = sharedPref.edit();
+
+                shared = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+                SharedPreferences.Editor editor = shared.edit();
                 editor.putString(ConstantKeys.KEYID,response.getResponse().getUser().getUid());
+                editor.commit();
+               // SharedPreferences.Editor editor = sharedPref.edit();
 
                 editor.commit();
                 Toast.makeText(getApplicationContext(),response.getResponse().getUser().getUid()+"",Toast.LENGTH_SHORT).show();
