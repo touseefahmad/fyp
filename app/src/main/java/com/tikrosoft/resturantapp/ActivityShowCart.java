@@ -6,6 +6,14 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +50,17 @@ import static com.tikrosoft.resturantapp.utility.ConstantKeys.PREF_NAME;
 
 public class ActivityShowCart extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerShowCart;
+<<<<<<< HEAD
+    RelativeLayout payment;
+    LinearLayout cardDetailsForm;
+    RadioGroup paymentType;
+    RadioButton cod, cardDetails;
+    Button cardDone;
+    EditText cvv, cardno, expiry;
+    int payment_type=0;
+
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
    public static TextView tvTotalPrice;
     Button btnClearCart;
     Button btnPlaceOrder;
@@ -71,6 +90,53 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
         btnPlaceOrder = (Button)findViewById(R.id.btnPlaceOrder);
         btnClearCart.setOnClickListener(this);
         btnPlaceOrder.setOnClickListener(this);
+<<<<<<< HEAD
+        payment = (RelativeLayout) findViewById(R.id.payments);
+        cardDetailsForm = (LinearLayout)findViewById(R.id.cardDetailsForm);
+        paymentType  = (RadioGroup) findViewById(R.id.paymentType);
+        cod = (RadioButton) findViewById(R.id.cod);
+        cod.setChecked(true);
+        cardDetails = (RadioButton)findViewById(R.id.cc);
+
+        cardno = (EditText)findViewById(R.id.cardno);
+        expiry= (EditText)findViewById(R.id.expiry);
+        cvv = (EditText)findViewById(R.id.cvv);
+
+        paymentType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
+                if(!cod.isChecked()){
+                    cardDetailsForm.setVisibility(View.VISIBLE);
+                }else{
+                    cardDetailsForm.setVisibility(View.GONE);
+                }
+            }
+        });
+        cardDone = (Button)findViewById(R.id.cardDone);
+        cardDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(cod.isChecked()){
+                    payment_type = 0;
+                }else{
+                    if(cvv.getText().toString().compareTo("")==0
+                    || expiry.getText().toString().compareTo("")==0
+                    || cardno.getText().toString().compareTo("")==0){
+                        Toast.makeText(getApplicationContext(),"Fill all fields", Toast.LENGTH_SHORT).show();
+                    }else{
+                        //update card cardlist items status
+                        payment_type=1;
+                    }
+                }
+                placeOrder();
+            }
+        });
+
+
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
        updateTotalPrice();
         populateList();
     }
@@ -109,13 +175,22 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
             tvTotalPrice.setText("0");
         }
         if(view.getId() == R.id.btnPlaceOrder){
+<<<<<<< HEAD
+            setPaymentDetails();
+
+=======
             placeOrder();
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
         }
 
     }
 
     public void placeOrder() {
+<<<<<<< HEAD
+        String URL = "http://23.92.28.13/rest/placeorderupdated.php?";
+=======
         String URL = getResources().getString(R.string.url)+"placeorder.php?";
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -161,7 +236,14 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
                     jsonParam.put("itemname", cartList.get(i).getItemName());//"cartList.get(i).getItemName());
                     jsonParam.put("qty", cartList.get(i).getQuantiry());
                     jsonParam.put("unitprice", cartList.get(i).getUnitPrice());
+<<<<<<< HEAD
+                    jsonParam.put("payment_type", Integer.toString(payment_type));
+                    jsonParam.put("order_status", "0");
                     array.put(jsonParam);
+//                    jsonParam.put("review", "");
+=======
+                    array.put(jsonParam);
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
                 } catch (
                         JSONException e) {
@@ -171,7 +253,11 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 
 
             try {
+<<<<<<< HEAD
+                jsonOBJ.put("data", array);
+=======
                 jsonOBJ.put("arr", array);
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
                 Log.e("val","VAL");
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -275,6 +361,13 @@ public class ActivityShowCart extends AppCompatActivity implements View.OnClickL
 //        queue.add(request_json);
     }
 
+<<<<<<< HEAD
+    public void setPaymentDetails(){
+        payment.setVisibility(View.VISIBLE);
+    }
+
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
 
 

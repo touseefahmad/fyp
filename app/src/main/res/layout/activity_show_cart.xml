@@ -28,6 +28,69 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
+<<<<<<< HEAD
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/payments"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        >
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/paymentType">
+            <RadioButton
+                android:id="@+id/cod"
+                android:layout_width="match_parent"
+                android:text="Cash on Delivery"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/cc"
+                android:layout_width="match_parent"
+                android:text="Credit Card"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+        <LinearLayout
+            android:id="@+id/cardDetailsForm"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/paymentType"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/cardno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card No"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/cvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="3"
+                android:hint="Cvv"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/expiry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="5"
+                android:hint="mm/yy"
+                android:inputType="number"/>
+
+        </LinearLayout>
+        <Button
+            android:layout_below="@+id/cardDetailsForm"
+            android:id="@+id/cardDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="done"/>
+    </RelativeLayout>
+
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
     <LinearLayout
         android:id="@+id/bottom"

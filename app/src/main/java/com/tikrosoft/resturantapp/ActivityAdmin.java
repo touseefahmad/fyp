@@ -24,6 +24,10 @@ public class ActivityAdmin extends AppCompatActivity implements View.OnClickList
     TextView tvadminOpeningTime;
     TextView tvadminClosingTime;
     Button btnAddRest;
+<<<<<<< HEAD
+    Button btnAdminOrders;
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
     ResponseAddRest response;
     ModelAddRest modle;
@@ -43,6 +47,17 @@ public class ActivityAdmin extends AppCompatActivity implements View.OnClickList
         tvadminOpeningTime= findViewById(R.id.tvadminOpeningTime);
         tvadminClosingTime = findViewById(R.id.tvadminClosingTime);
         btnAddRest = findViewById(R.id.btnAddRest);
+<<<<<<< HEAD
+        btnAdminOrders = (Button)findViewById(R.id.btnAdminOrders);
+        btnAdminOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent adminOrders = new Intent(ActivityAdmin.this, ActivityAdminOrders.class);
+                startActivity(adminOrders);
+            }
+        });
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
         btnAddRest.setOnClickListener(this);
 
 

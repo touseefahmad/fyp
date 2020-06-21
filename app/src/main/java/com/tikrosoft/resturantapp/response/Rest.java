@@ -1,9 +1,9 @@
-package com.tikrosoft.resturantapp.pojo.OrdersModel;
+package com.tikrosoft.resturantapp.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Order {
+public class Rest {
 
     @SerializedName("orderid")
     @Expose
@@ -26,7 +26,6 @@ public class Order {
     @SerializedName("unitprice")
     @Expose
     private String unitprice;
-<<<<<<< HEAD
     @SerializedName("payment_type")
     @Expose
     private String paymentType;
@@ -36,8 +35,6 @@ public class Order {
     @SerializedName("review")
     @Expose
     private String review;
-=======
->>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
     public String getOrderid() {
         return orderid;
@@ -95,7 +92,6 @@ public class Order {
         this.unitprice = unitprice;
     }
 
-<<<<<<< HEAD
     public String getPaymentType() {
         return paymentType;
     }
@@ -120,6 +116,4 @@ public class Order {
         this.review = review;
     }
 
-=======
->>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 }

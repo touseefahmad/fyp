@@ -48,5 +48,14 @@
             android:text="Add Resturant"/>
         </LinearLayout>
     </RelativeLayout>
+<<<<<<< HEAD
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdminOrders"
+        android:text="Get Orders"
+        android:layout_alignParentBottom="true"/>
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
 </RelativeLayout>

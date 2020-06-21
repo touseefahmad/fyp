@@ -32,6 +32,10 @@
         <activity android:name=".ActivityAdmin"/>
         <activity android:name=".ActivityShowUseOrders"/>
         <activity android:name=".ActivityAddItem"/>
+<<<<<<< HEAD
+        <activity android:name=".ActivityAdminOrders"/>
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
     </application>
 

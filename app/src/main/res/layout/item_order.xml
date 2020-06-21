@@ -55,8 +55,64 @@
             android:text="item name\n item two\n item 3"/>
 
     </LinearLayout>
+<<<<<<< HEAD
+    <LinearLayout
+        android:padding="10dp"
+        android:id="@+id/newlayout"
+        android:layout_below="@+id/odrview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Payment Type"/>
+            <TextView
+                android:id="@+id/type_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COD"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Order Status"/>
+            <TextView
+                android:id="@+id/status_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pending"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update Status"
+            android:id="@+id/btnchangeStatus"/>
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edreview"
+        android:visibility="gone"
+        android:layout_below="@id/newlayout"/>
+    <ImageView
+        android:layout_below="@+id/edreview"
+=======
     <ImageView
         android:layout_below="@+id/odrview"
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="10dp"

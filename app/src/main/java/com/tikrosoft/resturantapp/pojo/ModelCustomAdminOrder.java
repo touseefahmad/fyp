@@ -1,17 +1,14 @@
 package com.tikrosoft.resturantapp.pojo;
 
-public class ModelCustomOrder {
+public class ModelCustomAdminOrder {
     String oid;
     String uid;
     String[] items;
     String[] qty;
     String[] unitPrice;
-<<<<<<< HEAD
     String Status;
     String paymentType;
     String review;
-=======
->>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 
     public String getOid() {
         return oid;
@@ -52,31 +49,28 @@ public class ModelCustomOrder {
     public String[] getQty() {
         return qty;
     }
-<<<<<<< HEAD
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
 
     public void setStatus(String status) {
         Status = status;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
     }
 
     public String getStatus() {
         return Status;
     }
 
-    public void setReview(String review) {
-        this.review = review;
-    }
-
     public String getReview() {
         return review;
     }
 
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType;
+    public void setReview(String review) {
+        this.review = review;
     }
-
-    public String getPaymentType() {
-        return paymentType;
-    }
-=======
->>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
 }

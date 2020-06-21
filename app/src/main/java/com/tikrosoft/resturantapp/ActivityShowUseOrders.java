@@ -126,6 +126,12 @@ public class ActivityShowUseOrders extends AppCompatActivity implements View.OnC
 
 
                          customOrder.setOid(oid);
+<<<<<<< HEAD
+                         customOrder.setStatus(ordersList.get(i).getOrderStatus());
+                         customOrder.setPaymentType(ordersList.get(i).getPaymentType());
+                         customOrder.setReview(ordersList.get(i).getReview());
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
                          List<String> items = new ArrayList<String>();
                          List<String> qty = new ArrayList<String>();
                          List<String> prices= new ArrayList<String>();
@@ -157,6 +163,10 @@ public class ActivityShowUseOrders extends AppCompatActivity implements View.OnC
                                  customOrder.setQty(qtyArray);
                                  customOrder.setUnitPrice(unitPriceArray);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 407e44f3e95d06ba4bae8f675a99d4fc9322fc6d
                                  if(!oidExist(oid)) {
                                      customOrdersList.add(customOrder);
                                  }
